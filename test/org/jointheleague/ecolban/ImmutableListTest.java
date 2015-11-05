@@ -22,6 +22,7 @@ public class ImmutableListTest extends TestCase {
             e.head();
             fail("EmptyList.head() should throw a NoSuchElementException");
         } catch (NoSuchElementException exc) {
+            assertEquals("EmptyList has no head.", exc.getMessage());
         } catch (Exception exc) {
             fail("EmptyList.head() should throw a NoSuchElementException");
         }
@@ -29,6 +30,7 @@ public class ImmutableListTest extends TestCase {
             e.tail();
             fail("EmptyList.tail() should throw a NoSuchElementException");
         } catch (NoSuchElementException exc) {
+            assertEquals("EmptyList has no tail.", exc.getMessage());
         } catch (Exception exc) {
             fail("EmptyList.tail() should throw a NoSuchElementException");
         }
