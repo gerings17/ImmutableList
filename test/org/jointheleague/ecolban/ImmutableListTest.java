@@ -40,6 +40,22 @@ public class ImmutableListTest extends TestCase {
 
     @SuppressWarnings("unchecked")
     @Test
+    public void testListNodeConstructor() {
+        ListNode<Integer> lst1 = EmptyList.getInstance();
+        ListNode<Integer> lst2 = new ListNode<Integer>(1, lst1);
+        assertEquals("(1)", lst2.toString());
+        try {
+            ListNode<Integer> lst3 = new ListNode<Integer>(1, null);
+            fail("Calling the ListNode constructor with a null tail should throw an IllegalArgumentException.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Tail cannot be null.", e.getMessage());
+        } catch (Exception e) {
+            fail("Calling the ListNode constructor with a null tail should throw an IllegalArgumentException.");
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    @Test
     public void testListNodeWithInteger() {
         ListNode<Integer> lst0 = EmptyList.getInstance();
         ListNode<Integer> lst1 = lst0.push(1);
@@ -112,6 +128,30 @@ public class ImmutableListTest extends TestCase {
         assertTrue(lst1.tail().isEmpty());
         assertTrue(lst5.tail().tail().tail().isEmpty());
         assertSame(lst0.push("one").remove("one"), lst0);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Test
+    public void testListNodeWithNull() {
+        ListNode<Integer> lst1 = EmptyList.getInstance().push(3).push(2).push(1);
+        ListNode<Integer> lst2 = lst1.push(null);
+        ListNode<Integer> lst3 = lst1.push(null);
+        ListNode<Integer> lst4 = lst1.push(0);
+        ListNode<Integer> lst5 = lst2.append(null);
+        ListNode<Integer> lst6 = lst5.remove(null);
+        assertEquals("(1 2 3)", lst1.toString());
+        assertEquals("(null 1 2 3)", lst2.toString());
+        assertEquals("(null 1 2 3)", lst3.toString());
+        assertEquals("(0 1 2 3)", lst4.toString());
+        assertEquals("(null 1 2 3 null)", lst5.toString());
+        assertEquals("(1 2 3)", lst6.toString());
+        assertTrue(lst2.equals(lst3));
+        assertFalse(lst2.equals(lst4));
+        assertTrue(lst6.equals(lst1));
+        assertFalse(lst2 == lst3);
+        assertTrue(lst2.tail() == lst3.remove(null));
+        assertTrue(lst2.tail() == lst4.remove(0));
+
     }
 
 }
