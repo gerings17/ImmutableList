@@ -10,6 +10,14 @@ public class ListNode<T> {
         // 1. Complete
     }
 
+    // Package private constructor only to be used for 
+    // a call to super() in the EmptyList constructor.
+    ListNode() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+
     /**
      * 
      * @return true if and only iff the list is empty
@@ -24,21 +32,6 @@ public class ListNode<T> {
      */
     public int length() {
         // 3. Add return statement
-    }
-
-    /**
-     * An empty list has a string representation: "()" whereas a non-empty list
-     * has a string representation "(e1 e2 e3 ...)", where e1, e2, e3, ... are
-     * the string representations of the elements of the list.
-     * 
-     * @return the string representation of the list
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append('(');
-        // 10. Complete
-        sb.append(')');
-        return sb.toString();
     }
 
     /**
@@ -107,6 +100,21 @@ public class ListNode<T> {
         // 9. Add return statement
     }
 
+    /**
+     * An empty list has a string representation: "()" whereas a non-empty list
+     * has a string representation "(e1 e2 e3 ...)", where e1, e2, e3, ... are
+     * the string representations of the elements of the list.
+     * 
+     * @return the string representation of the list
+     */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('(');
+        // 10. Complete
+        sb.append(')');
+        return sb.toString();
+    }
+
     @Override
     public int hashCode() {
         return 101 * (17 * head.hashCode() + tail.hashCode());
@@ -121,6 +129,7 @@ public class ListNode<T> {
         ListNode<T> that = (ListNode<T>) other;
         // 11. Complete. List are equal if they have the same length and
         // elements are pairwise equal.
+
     }
 
 }

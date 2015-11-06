@@ -8,7 +8,7 @@ public class EmptyList<T> extends ListNode<T> {
     private static EmptyList instance = new EmptyList();
     
     private EmptyList() {
-        super(null, null);
+        super();
     }
     
     @SuppressWarnings("rawtypes")
