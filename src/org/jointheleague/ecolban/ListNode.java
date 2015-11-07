@@ -7,6 +7,9 @@ public class ListNode<T> {
     private final int length;
 
     public ListNode(T head, ListNode<T> tail) {
+    	this.head = head;
+    	this.tail = tail;
+    	length = tail.length() + 1;
         // 1. Complete
     }
 
@@ -23,6 +26,7 @@ public class ListNode<T> {
      * @return true if and only iff the list is empty
      */
     public boolean isEmpty() {
+    	return false;
         // 2. Add return statement
     }
 
