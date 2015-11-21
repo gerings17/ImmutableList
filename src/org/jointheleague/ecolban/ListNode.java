@@ -1,6 +1,6 @@
 package org.jointheleague.ecolban;
 
-public class ListNode<T> {
+public class ListNode<T> implements ImmutableList<T>{
 
 	private final T head;
 	private final ListNode<T> tail;
@@ -89,7 +89,7 @@ public class ListNode<T> {
 	 *            the element to push onto the list
 	 * @return a new list with e added to the beginning of the list.
 	 */
-	public ListNode<T> push(T e) {
+	public ImmutableList<T> push(T e) {
 		return new ListNode<T>(e, this);
 		// 6. Add return statement
 	}
@@ -100,7 +100,7 @@ public class ListNode<T> {
 	 *            the new element to append to the list
 	 * @return a new list with e added to the end of the list.
 	 */
-	public ListNode<T> append(T e) {
+	public ImmutableList<T> append(T e) {
 		return new ListNode<T>(head, tail.append(e));
 		// 7. Complete. Hint: Use recursion
 	}
